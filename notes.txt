@@ -1,0 +1,17 @@
+
+make some address points to localhost
+https://bowerwebsolutions.com/how-to-edit-your-local-host-file-for-testing-web-sites/
+
+
+docker run -d -p 80:80 -p 443:443 nginx_image
+
+docker image ls -q
+to list all images but show only id
+
+
+first configure nginx. install it, install ssl, expose ports, remove default config in sites available, copy a config for wordpress in conf.d
+There is a volume, that is shared between nginx and wordpress containers, that will contain the files of wordpress that nginx has to serve
+
+then configure mariadb. 
+
+
