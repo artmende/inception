@@ -1,11 +1,22 @@
+
+COMPOSE_FILE = ./srcs/docker-compose.yml
+
+PROJECT_NAME = lemp_artmende
+
+COMPOSE_FLAGS = --file $(COMPOSE_FILE) --project-name $(PROJECT_NAME)
+
+UP_FLAGS = --detach
+
 all:
-	docker build -t nginx_image ./srcs/requirements/nginx/
-	docker run -d -p 80:80 -p 443:443 nginx_image
+	rm -f ~/.docker/config.json
+	docker compose $(COMPOSE_FLAGS) up $(UP_FLAGS)
+	# docker compose --file ./srcs/docker-compose.yml --project-name LEMP_artmende up --detach
+
+down:
+	docker compose $(COMPOSE_FLAGS) down
 
 clean:
-	docker container stop $$(docker container ls -aq)
-	docker container rm $$(docker container ls -aq)
-	docker image rm $$(docker image ls -aq)
+
 
 # fclean:
 

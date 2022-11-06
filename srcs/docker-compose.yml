@@ -1,8 +1,14 @@
 services:
-	nginx:
-		build: ./requirements/nginx/
+  nginx:
+    build: ./requirements/nginx/
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /home/artmende/data:/somefolder
 
-networks:
+# networks:
 
-volumes:
-
+# volumes:
+#   www:
+#     data: /home/artmende/data
