@@ -8,6 +8,9 @@ https://docs.docker.com/compose/compose-file/
 
 https://docs.docker.com/compose/reference/
 
+https://docs.docker.com/compose/compose-file/#volumes-top-level-element
+https://docs.docker.com/engine/reference/commandline/volume_create/
+
 
 docker run -d -p 80:80 -p 443:443 nginx_image
 
@@ -20,4 +23,5 @@ There is a volume, that is shared between nginx and wordpress containers, that w
 
 then configure mariadb. 
 
-
+root /var/www/html;
+/etc/nginx/

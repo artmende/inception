@@ -5,10 +5,21 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /home/artmende/data:/somefolder
+      - "www:/some_folder"
 
 # networks:
 
-# volumes:
-#   www:
-#     data: /home/artmende/data
+volumes:
+  www:
+    driver: local
+    driver_opts:
+      device: /home/artmende/data/www
+      type: volume
+      o: bind
+
+  db:
+    driver: local
+    driver_opts:
+      device: /home/artmende/data/db
+      type: volume
+      o: bind
