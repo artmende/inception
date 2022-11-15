@@ -12,17 +12,19 @@ all:
 	mkdir -p ~/data/db
 	rm -f ~/.docker/config.json
 	docker compose $(COMPOSE_FLAGS) up $(UP_FLAGS)
-	# docker compose --file ./srcs/docker-compose.yml --project-name LEMP_artmende up --detach
+# docker compose --file ./srcs/docker-compose.yml --project-name LEMP_artmende up --detach
 
 down:
 	docker compose $(COMPOSE_FLAGS) down
 
 clean: down
-	docker image rm $$(docker image ls -a | grep lemp_artmende | awk '{print $$3}')
-	# docker prune with or without volume option
+	docker system prune -af
+#	docker image rm $$(docker image ls -a | grep lemp_artmende | awk '{print $$3}')
+# docker prune with or without volume option
 
-# fclean:
+fclean: clean
+	docker volume rm $$(docker volume ls -q)
 
 re: clean all
 
-.PHONY: clean fclean re all
+.PHONY: all down clean fclean re

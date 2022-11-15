@@ -25,3 +25,6 @@ then configure mariadb.
 
 root /var/www/html;
 /etc/nginx/
+
+nginx conf : 
+root vs alias : root append, alias not append

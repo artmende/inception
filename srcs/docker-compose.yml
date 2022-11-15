@@ -5,7 +5,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - "www:/some_folder"
+      - "www:/var/www/html"
 
 # networks:
 
