@@ -7,7 +7,8 @@ services:
     volumes:
       - "www:/var/www/html"
 
-# networks:
+networks:
+  inception:
 
 volumes:
   www:
