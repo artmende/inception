@@ -1,23 +1,36 @@
 services:
-  nginx:
-    build: ./requirements/nginx/
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - "www:/var/www/html"
-    networks:
-      - inception
   mariadb:
     build: ./requirements/mariadb/
+    image: mariadb
+    env_file: ./.env
+    restart: always
     volumes:
       - "db:/var/lib/mysql"
     networks:
       - inception
+
   wordpress:
+    depends_on:
+      - mariadb
     build: ./requirements/wordpress/
+    image: wordpress
+    restart: always
     volumes:
       - "www:/www_folder"
+    networks:
+      - inception
+
+  nginx:
+    depends_on:
+      - mariadb
+      - wordpress
+    build: ./requirements/nginx/
+    image: nginx
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - "www:/var/www/html"
     networks:
       - inception
 

@@ -28,3 +28,35 @@ root /var/www/html;
 
 nginx conf : 
 root vs alias : root append, alias not append
+
+--password=$Password
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+3 containers :
+    - mariadb : database for wordpress created, with a user created that has all privileges for that new db. +volume
+    - wordpress : download and extract wordpress files, has php installed. volume shared with nginx
+    - nginx : config file working for new wordpress website. volume that is shared with wordpress container
+
+
+mariadb has a simple database, with a user for wordpress. Password is saved in env file somehow. Make it work first with plain password maybe
+
+wordpress container has php installed, and has the files for the website
+
+nginx is the last one to start. it depends on both mariadb and wordpress. See video in playlist to see syntax for depends, and restart
+
+
+1/MARIADB: install mariadb, create user, create database, grant priv for that db to that user, flush, thats it
+mariadb : volume, network, no port, depends on nothing, restart always
+
+2/WORDPRESS: install php, download wordpress, copy config file with details from db
+wordpress : volume, network, no port, depends on mariadb, restart always
+
+3/NGINX: install nginx, [DO TLS STUFF], copy config file to make wordpress works (include the link to wordpress container for php), reload
+nginx : volume, network, port bind, depends on wordpress and mariadb, restard always
+
+
+NEED : make TLS work without warning. Need to create a CA and make it trusted by the VM ? Or something like that
+
+QUESTION : why php is installed in wordpress container and not nginx container ?
+

@@ -2,7 +2,7 @@ FROM debian:buster
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y mariadb-server mariadb-client
+RUN apt-get install -y mariadb-server
 
 RUN mkdir /tools
 
