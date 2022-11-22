@@ -8,6 +8,11 @@ RUN mkdir /tools
 
 COPY ./tools/* /tools/
 
+RUN chown -R mysql:mysql /var/lib/mysql; \
+	mkdir -p /var/run/mysqld; \
+	mkfifo /var/run/mysqld/mysqld.sock; \
+	chown -R mysql:mysql /var/run/mysqld
+
 # RUN service mysql start
 
 # RUN echo "CREATE DATABASE wordpress;" | mariadb -u root --skip-password

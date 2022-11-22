@@ -1,4 +1,7 @@
 
+How to create a valid self signed SSL Certificate?
+https://www.youtube.com/watch?v=VH4gXcvkmOY
+
 make some address points to localhost
 https://bowerwebsolutions.com/how-to-edit-your-local-host-file-for-testing-web-sites/
 
