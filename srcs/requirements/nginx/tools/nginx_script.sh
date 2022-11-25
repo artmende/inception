@@ -1,7 +1,8 @@
 #!/bin/bash
 
-rm -rf /etc/nginx/sites-enabled/default
-mv /tools/default.conf /etc/nginx/conf.d/
+rm -f /etc/nginx/sites-enabled/default
+rm -f /etc/nginx/conf.d/default.conf
+cp /tools/default.conf /etc/nginx/conf.d/
 
 
 nginx -g "daemon off;"
