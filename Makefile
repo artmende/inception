@@ -24,7 +24,7 @@ clean: down
 
 fclean: clean
 	docker volume rm $$(docker volume ls -q)
-	sudo rm -rf ~/data/www/wordpress
+	sudo rm -rf ~/data/www
 	sudo rm -rf ~/data/db
 
 re: fclean all

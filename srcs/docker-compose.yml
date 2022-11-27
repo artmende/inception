@@ -9,13 +9,22 @@ services:
       - "db:/var/lib/mysql"
     networks:
       - inception
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-u", "$WORDPRESS_DB_USER", "-p$WORDPRESS_DB_USER_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
 
   wordpress:
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     build: ./requirements/wordpress/
     container_name: wordpress
     image: wordpress
+    env_file: ./.env
     restart: always
     volumes:
       - "www:/var/www/html"
