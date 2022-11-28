@@ -15,8 +15,6 @@ services:
       timeout: 5s
       retries: 5
 
-
-
   wordpress:
     depends_on:
       mariadb:
@@ -28,7 +26,6 @@ services:
     restart: always
     volumes:
       - "www:/var/www/html"
-      # - "www:/www_folder"
     networks:
       - inception
 

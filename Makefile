@@ -12,20 +12,19 @@ all:
 	mkdir -p ~/data/db
 	rm -f ~/.docker/config.json
 	docker compose $(COMPOSE_FLAGS) up $(UP_FLAGS)
-# docker compose --file ./srcs/docker-compose.yml --project-name LEMP_artmende up --detach
 
 down:
 	docker compose $(COMPOSE_FLAGS) down
 
 clean: down
 	docker system prune -af
-#	docker image rm $$(docker image ls -a | grep lemp_artmende | awk '{print $$3}')
-# docker prune with or without volume option
+# That will stop the containers and delete them, and also delete the images. Volumes are not removed
 
 fclean: clean
 	docker volume rm $$(docker volume ls -q)
 	sudo rm -rf ~/data/www
 	sudo rm -rf ~/data/db
+# That remove everything. Containers, images, volumes, and also the files on the host
 
 re: fclean all
 

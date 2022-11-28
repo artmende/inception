@@ -19,10 +19,9 @@ wp user create $WP_NON_ADMIN_LOGIN $WP_NON_ADMIN_EMAIL --role=editor --user_pass
 
 fi
 
+# telling php-fpm to listen on port 9000
 rm -f /etc/php/7.3/fpm/pool.d/www.conf
 cp /tools/www.conf /etc/php/7.3/fpm/pool.d/
-
-echo "after if"
 
 chown -R www-data:www-data /var/www/html
 

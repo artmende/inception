@@ -20,16 +20,6 @@ RUN mkdir /tools
 
 COPY ./tools/* /tools/
 
-# configuring nginx
-# RUN rm -rf /etc/nginx/sites-available/default && \
-# 	mv /tools/default.conf /etc/nginx/conf.d/
-
-EXPOSE 80 443
-
-
+EXPOSE 443
 
 CMD ["bash", "/tools/nginx_script.sh"]
-
-# CMD ["nginx", "-g", "daemon off;"]
-
-# CMD nginx -g "daemon off;"
