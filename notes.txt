@@ -1,3 +1,13 @@
+Playlist of useful videos : https://www.youtube.com/playlist?list=PLSHUCASK7ztHQ45lf4ahySPwd-wnJvF51
+
+
+SQL random infos:
+How do I list all the columns in a table? DESCRIBE name_of_table; SELECT column_name FROM user_tab_cols WHERE table_name = 'myTableName'; SHOW COLUMNS FROM table_name;
+SQL list all tables : SHOW tables;
+SQL list databases : SHOW databases;
+
+https://www.sqltutorial.org/sql-list-all-tables/
+https://stackoverflow.com/questions/1580450/how-do-i-list-all-the-columns-in-a-table
 
 How to create a valid self signed SSL Certificate?
 https://www.youtube.com/watch?v=VH4gXcvkmOY
